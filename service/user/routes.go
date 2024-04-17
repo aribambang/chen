@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/aribambang/chen/config"
+	"github.com/aribambang/chen/configs"
 	"github.com/aribambang/chen/service/auth"
 	"github.com/aribambang/chen/types"
 	"github.com/aribambang/chen/utils"
@@ -51,7 +51,7 @@ func (h *Handler) handleLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	secret := []byte(config.Envs.JWTSecret)
+	secret := []byte(configs.Envs.JWTSecret)
 	token, err := auth.CreateJWT(secret, u.ID)
 	if err != nil {
 		utils.WriteError(w, http.StatusInternalServerError, err)

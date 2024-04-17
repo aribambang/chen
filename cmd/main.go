@@ -5,17 +5,17 @@ import (
 	"log"
 
 	"github.com/aribambang/chen/cmd/api"
-	"github.com/aribambang/chen/config"
+	"github.com/aribambang/chen/configs"
 	"github.com/aribambang/chen/db"
 	"github.com/go-sql-driver/mysql"
 )
 
 func main() {
 	db, err := db.NewMySQLStorage(mysql.Config{
-		User:                 config.Envs.DBUser,
-		Passwd:               config.Envs.DBPassword,
-		Addr:                 config.Envs.DBAddress,
-		DBName:               config.Envs.DBName,
+		User:                 configs.Envs.DBUser,
+		Passwd:               configs.Envs.DBPassword,
+		Addr:                 configs.Envs.DBAddress,
+		DBName:               configs.Envs.DBName,
 		Net:                  "tcp",
 		AllowNativePasswords: true,
 		ParseTime:            true,
